@@ -93,7 +93,7 @@ def pregunta_04():
     # Importe GridSearchCV
     # Importe Pipeline
     # Importe BernoulliNB
-    from sklearn.pipeline import make_pipeline
+    from sklearn.pipeline import Pipeline
     from sklearn.feature_extraction.text import CountVectorizer
     from sklearn.naive_bayes import BernoulliNB
     from sklearn.model_selection import GridSearchCV
