@@ -97,6 +97,7 @@ def pregunta_04():
     from sklearn.feature_extraction.text import CountVectorizer
     from sklearn.naive_bayes import BernoulliNB
     from sklearn.model_selection import GridSearchCV
+    import numpy as np
 
     # Cargue las variables.
     x_train, x_test, y_train, y_test = pregunta_02()
@@ -113,7 +114,7 @@ def pregunta_04():
         analyzer= analyzer,
         lowercase=True,
         stop_words='english',
-        token_pattern="(?u)\b\w\w+\b",
+        token_pattern=r"(?u)\b\w\w+\b",
         binary=True,
         max_df=1.0,
         min_df=5,
@@ -122,7 +123,7 @@ def pregunta_04():
     # Cree un pipeline que contenga el CountVectorizer y el modelo de BernoulliNB.
     pipeline = Pipeline(
         steps=[
-            ("CountVectorizer", countVectorizer),
+            ("countVectorizer", countVectorizer),
             ("BernoulliNB", BernoulliNB()),
         ],
     )
@@ -131,7 +132,7 @@ def pregunta_04():
     # considerar 10 valores entre 0.1 y 1.0 para el parámetro alpha de
     # BernoulliNB.
     param_grid = {
-        "BernoulliNB_alpha": np.array(0.1, 1, 10),
+        "BernoulliNB__alpha": np.array((0.0, 1, 10)),
     }
 
     # Defina una instancia de GridSearchCV con el pipeline y el diccionario de
